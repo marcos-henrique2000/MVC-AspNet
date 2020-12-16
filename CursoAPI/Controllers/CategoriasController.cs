@@ -32,7 +32,7 @@ namespace CursoAPI.Controllers
         public async Task<ActionResult<Categoria>> GetCategoria(int id)
         {
             var categoria = await _context.Categorias.FindAsync(id);
-
+            
             if (categoria == null)
             {
                 return NotFound();
@@ -52,7 +52,8 @@ namespace CursoAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(categoria).State = EntityState.Modified;
+            //_context.Entry(categoria).State = EntityState.Modified;
+            _context.SetModified(categoria);
 
             try
             {
